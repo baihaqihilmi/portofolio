@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baihaqi Hilmi Estanto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+        .profile-picture-frame {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(to bottom right, #4F46E5, #FCD34D); /* Blue and Yellow gradient */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 24px; /* Increased margin to move it away from the text */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        .profile-picture-frame img {
+            border-radius: 50%;
+            object-fit: cover; /* Ensure the image covers the circular area */
+            clip-path: circle(50% at 50% 50%); /* Ensure the image is a circle */
+        }
+        .project-link {
+            cursor: pointer;
+            color: #3b82f6; /* Tailwind's blue-500 */
+            text-decoration: underline;
+        }
+        .project-link:hover {
+            color: #2563eb; /* Tailwind's blue-700 */
+        }
+    </style>
+</head>
+<body class="bg-yellow-50">
+    <header class="bg-blue-900 text-yellow-50 py-6">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="profile-picture-frame mr-4">
+                    <img src="images/bai.png" alt="Profile Picture">
+                </div>
+                <h1 class="text-3xl font-semibold">Baihaqi Hilmi Estanto</h1>
+            </div>
+        </div>
+    </header>
+    <main class="container mx-auto px-4 py-10">
+        <nav class="mb-10">
+            <ul class="flex space-x-6 justify-center">
+                <li class="cursor-pointer text-gray-700 hover:text-blue-600 font-semibold border-b-2 border-transparent hover:border-blue-600 transition duration-300 text-lg" onclick="showTab('projects')">Projects</li>
+                <li class="cursor-pointer text-gray-700 hover:text-blue-600 font-semibold border-b-2 border-transparent hover:border-blue-600 transition duration-300 text-lg" onclick="showTab('about')">About</li>
+                <li class="cursor-pointer text-gray-700 hover:text-blue-600 font-semibold border-b-2 border-transparent hover:border-blue-600 transition duration-300 text-lg" onclick="showTab('contact')">Contact</li>
+                <li class="cursor-pointer text-gray-700 hover:text-blue-600 font-semibold border-b-2 border-transparent hover:border-blue-600 transition duration-300 text-lg" onclick="showTab('extra')">Extra</li>
+            </ul>
+        </nav>
+        <section id="projects" class="tab-content active">
+            <h2 class="text-2xl font-semibold mb-6 text-blue-900 text-center">Projects</h2>
+            <div class="grid grid-cols-1 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Computer Vision</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-lg shadow-md p-6 project-card">
+                            <h4 class="text-lg font-semibold mb-2 text-blue-600">
+                                <span class="project-link" onclick="showProjectDescription('cv-project-1')">LiDAR Location Detection for Autonomous Docking to an AMR Robot</span>
+                            </h4>
+                            <div id="cv-project-1-description" class="text-gray-600 mb-3 hidden">
+                                <p>This project pioneers the use of LiDAR data to enable precise autonomous docking of an AMR robot.  It employs advanced computer vision techniques to accurately determine the docking station's location.</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>Key Features:
+                                        <ul>
+                                            <li>YOLO-based X, Y coordinate extraction of the Docking Station.</li>
+                                            <li>Runtime speed optimization to 70%.</li>
+                                            <li>High-precision docking.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Technologies Used:
+                                        <ul>
+                                            <li>YOLO (Ultralytics)</li>
+                                            <li>OpenVINO</li>
+                                        </ul>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <img src="/images/asa.jpg" alt="CV Project 1" class="w-full rounded-md">
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6 project-card">
+                            <h4 class="text-lg font-semibold mb-2 text-blue-600">
+                                <span class="project-link" onclick="showProjectDescription('cv-project-2')">Facial Recognition</span>
+                            </h4>
+                            <div  id="cv-project-2-description" class="text-gray-600 mb-3 hidden">
+                                 <p>This project involves a sophisticated multi-class classification approach for facial recognition.</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>Model Used:
+                                         <ul>
+                                            <li>YuNet (Detection)</li>
+                                            <li>MobileNet (Embeddings)</li>
+                                            <li>K-Nearest Neighbors (Classification)</li>
+                                          </ul>
+                                    </li>
+                                    <li>Technologies Used:
+                                        <ul>
+                                            <li>OpenCV</li>
+                                            <li>PyTorch</li>
+                                        </ul>
+                                    </li>
+                                    <li>Loss Function: ArchFace (Training)</li>
+                                </ul>
+                            </div>
+                            <img src="images\rec.jpg" alt="CV Project 2" class="w-full rounded-md">
+                        </div>
+                         <div class="bg-white rounded-lg shadow-md p-6 project-card">
+                            <h4 class="text-lg font-semibold mb-2 text-blue-600">
+                                <span class="project-link" onclick="showProjectDescription('cv-project-3')">Facial Recognition (One-Shot Learning)</span>
+                            </h4>
+                            <div  id="cv-project-3-description" class="text-gray-600 mb-3 hidden">
+                                <p>This project explores a highly efficient one-shot learning approach to facial recognition.</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>Model Used: VNet with SFace pretrained data from OpenCV</li>
+                                    <li>Technologies Used: OpenCV</li>
+                                </ul>
+                            </div>
+                            <img src="https://placehold.co/400x300/EEE/31343C" alt="CV Project 3" class="w-full rounded-md">
+                        </div>
+                         <div class="bg-white rounded-lg shadow-md p-6 project-card">
+                            <h4 class="text-lg font-semibold mb-2 text-blue-600">
+                                 <span class="project-link" onclick="showProjectDescription('cv-project-4')">Age and Gender Detection</span>
+                            </h4>
+                            <div  id="cv-project-4-description" class="text-gray-600 mb-3 hidden">
+                                 <p>This project focuses on accurately determining the age and gender of individuals from visual data.</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>Technologies Used:
+                                         <ul>
+                                            <li>OpenVINO-Runtime</li>
+                                            <li>OpenCV</li>
+                                          </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <img src="images\age.jpg" alt="CV Project 4" class="w-full rounded-md">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Natural Language Processing</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-lg shadow-md p-6 project-card">
+                            <h4 class="text-lg font-semibold mb-2 text-blue-600">
+                                <span class="project-link" onclick="showProjectDescription('nlp-project-1')">Voice to Voice Question Answering with OpenAI Realtime API</span>
+                            </h4>
+                            <div id="nlp-project-1-description" class="text-gray-600 mb-3 hidden">
+                                <p>This project delivers a real-time voice-to-voice question answering system, optimized for educational interactions with children.</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>Key Features:
+                                        <ul>
+                                            <li>Real-time voice interaction.</li>
+                                            <li>Voice optimization for clarity.</li>
+                                            <li>Designed for children's educational purposes.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Technologies Used:
+                                        <ul>
+                                             <li>SileroVAD</li>
+                                             <li>OpenAI Realtime API</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <img src="images/awas.jpg" alt="NLP Project 1" class="w-full rounded-md">
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6 project-card">
+                            <h4 class="text-lg font-semibold mb-2 text-blue-600">
+                                <span class="project-link" onclick="showProjectDescription('nlp-project-2')">NER Token Classification and BI-Rads Classes Classification based on Turkish Medical Report</span>
+                            </h4>
+                            <div id="nlp-project-2-description" class="text-gray-600 mb-3 hidden">
+                                <p>This project focuses on advanced classification of Turkish medical reports, including Named Entity Recognition (NER) and BI-RADS classes. This project was a finalist entry for TEKNOFEST'24, a competition held by the Turkish Technology Team.</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>Key Features:
+                                        <ul>
+                                            <li>Named Entity Recognition (NER)</li>
+                                            <li>BI-RADS classification</li>
+                                            <li>Processing of Turkish Medical Reports</li>
+                                        </ul>
+                                    </li>
+                                    <li>Technologies Used:
+                                        <ul>
+                                            <li>HuggingFace</li>
+                                            <li>NLTK</li>
+                                            <li>Spacy</li>
+                                            <li>PyTorch</li>
+                                        </ul>
+                                    </li>
+                                     <li>Model Used: BERTurk</li>
+                                </ul>
+                            </div>
+                            <img src="images\tekno24.jpeg" alt="NLP Project 2" class="w-full rounded-md">
+                        </div>
+                         <div class="bg-white rounded-lg shadow-md p-6 project-card">
+                            <h4 class="text-lg font-semibold mb-2 text-blue-600">
+                                 <span class="project-link" onclick="showProjectDescription('nlp-project-3')">Chatbot for Tourist Attraction</span>
+                            </h4>
+                            <div id="nlp-project-3-description" class="text-gray-600 mb-3 hidden">
+                                <p>This project involves the development of a chatbot designed to provide information and assistance related to tourist attractions. This project was a finalist entry for TEKNOFEST’22.</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>Technologies Used:
+                                        <ul>
+                                             <li>GroqAPI</li>
+                                             <li>RestfulAPI</li>
+                                             <li>GoogleTTS</li>
+                                             <li>Google STT</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <img src="https://nctrobotic.com/wp-content/uploads/2024/07/Robot.6.1.png" alt="NLP Project 3" class="w-full rounded-md">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-700">Medical Imaging</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-lg shadow-md p-6 project-card">
+                            <h4 class="text-lg font-semibold mb-2 text-blue-600">
+                                <span class="project-link" onclick="showProjectDescription('audio-project-1')">Rib Segmentation</span>
+                            </h4>
+                            <div id="audio-project-1-description" class="text-gray-600 mb-3 hidden">
+                                <p>This final year project focused on the segmentation of human ribs from medical images, employing two distinct deep learning models.</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>Technologies Used:
+                                        <ul>
+                                            <li>TensorFlow</li>
+                                            <li>OpenCV</li>
+                                        </ul>
+                                    </li>
+                                    <li>Model Used:
+                                         <ul>
+                                            <li>UNet</li>
+                                            <li>DeepLabv3+</li>
+                                          </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <img src="images/ribs.png" alt="Audio Project 1" class="w-full rounded-md">
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6 project-card">
+                            <h4 class="text-lg font-semibold mb-2 text-blue-600">
+                                <span class="project-link" onclick="showProjectDescription('audio-project-2')">BI-RADS Classification based on Mammography Images</span>
+                            </h4>
+                            <div id="audio-project-2-description" class="text-gray-600 mb-3 hidden">
+                                <p>This project focused on the classification of BI-RADS (Breast Imaging Reporting and Data System) categories from mammography images. This project was a finalist entry for TEKNOFEST’22.</p>
+                                 <ul class="list-disc list-inside mt-2">
+                                    <li>Technologies Used:
+                                        <ul>
+                                            <li>OpenCV</li>
+                                            <li>PyTorch</li>
+                                        </ul>
+                                    </li>
+                                    <li>Model Used:
+                                         <ul>
+                                            <li>VGGNet</li>
+                                            <li>AlexNet</li>
+                                          </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <img src="https://placehold.co/400x300/EEE/31343C" alt="Audio Project 2" class="w-full rounded-md">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="tab-content">
+            <h2 class="text-2xl font-semibold mb-6 text-blue-900 text-center">About Me</h2>
+            <div class="bg-white rounded-lg shadow-md p-7  gap-6">
+                
+                <div>
+                    <p class="text-gray-700 leading-relaxed mb-4">Hi, I am Baihaqi.
+I am a fresh graduate in Biomedical Engineering with a strong passion for combining healthcare and technology. Throughout my academic journey, I have developed both theoretical knowledge and practical skills by participating in research projects, competitions, and hands-on coursework. My interests include medical device development, AI integration in healthcare, and data-driven problem solving. I’m eager to contribute to innovative solutions that enhance patient care and medical technologies.
+
+</p>
+                    <div class="mt-6">
+<h4 class="text-lg font-semibold mb-3 text-blue-700">Technical Skills</h4>
+<ul class="list-disc list-inside text-gray-600 space-y-2">
+    <li>Medical Device Testing & Calibration</li>
+    <li>AI & Machine Learning Implementation</li>
+    <li>Programming in Python, C#, and C/C++</li>
+    <li>Data Analysis with pandas, NumPy, and visualization tools</li>
+    <li>Embedded Systems and Microcontroller Integration</li>
+    <li>Realtime Systems with WebSocket & OpenAI Realtime API</li>
+    <li>Langchain & LLM (ChromaDB, AWS Bedrock, OpenAI)</li>
+    <li>CI/CD Pipelines and DevOps Workflows</li>
+</ul>
+
+<h4 class="text-lg font-semibold mb-3 text-blue-700">Software & Tools</h4>
+<ul class="list-disc list-inside text-gray-600 space-y-2">
+    <li>SolidWorks (CAD design and simulation)</li>
+    <li>Git, GitHub, GitLab for version control</li>
+    <li>AWS Services & RESTful API Integration</li>
+    <li>SQL, MongoDB, and ChromaDB for data storage</li>
+    <li>MATLAB, LabVIEW (basic proficiency)</li>
+</ul>
+<h4 class="text-lg font-semibold mb-3 text-blue-700">Soft Skills</h4>
+<ul class="list-disc list-inside text-gray-600 space-y-2">
+    <li>Team Collaboration in research and development</li>
+    <li>Strong Analytical and Problem-Solving Skills</li>
+    <li>Clear and Effective Communication</li>
+    <li>Adaptability in fast-paced environments</li>
+    <li>Initiative-driven and self-motivated</li>
+</ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="tab-content">
+            <h2 class="text-2xl font-semibold mb-6 text-blue-900 text-center">Contact</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-gray-700 mb-5">Feel free to reach out </p>
+                <ul class="list-disc list-inside space-y-3">
+                    <li class="text-blue-600 hover:text-blue-800 text-lg"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=baihaqiestanto@gmail.com">Email</a></li>
+                    <li class="text-blue-600 hover:text-blue-800 text-lg"><a href="https://www.linkedin.com/in/baihaqi-hilmi-estanto/" target=_blank" rel="noopener noreferrer">LinkedIn: Baihaqi Hilmi Estanto</a></li>
+                    <li class="text-blue-600 hover:text-blue-800 text-lg"><a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub: baihaqihilmi</a></li>
+                </ul>
+            </div>
+        </section>
+        <section id="extra" class="tab-content">
+            <h2 class="text-2xl font-semibold mb-6 text-blue-900 text-center">Extra</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center">
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-3 text-blue-700 text-center">Published Papers</h4>
+                        <p class="text-gray-600 mb-2 text-center">An Approach to Classifying Breast Density Level Using Deep Learning-Based
+Segmentation Model on Full-Field Digital Mammograms</p>
+                        <a href="https://ieeexplore.ieee.org/document/10304947/" class="text-blue-600 hover:text-blue-800 text-lg text-center block">Read More</a>
+                        <p class="text-gray-600 mb-2 text-center">A Comparative Study of Breast Mass Detection Using YOLOv8 Deep Learning
+Model in Various Data Scenarios on Multi-View Digital Mammograms</p>
+                        <a href="https://dergipark.org.tr/en/pub/bitlisfen/issue/81610/1364332" class="text-blue-600 hover:text-blue-800 text-lg text-center block">Read More</a>
+                        <p class="text-gray-600 mb-2 text-center">Application of Recurrent Neural Network Bi-Long Short-Term Memory, Gated
+Recurrent Unit and Bi-Gated Recurrent Unit for Forecasting Rupiah Against
+Dollar (USD) Exchange Rate</p>
+                        <a href="https://journal.irpi.or.id/index.php/predatecs/article/view/1094" class="text-blue-600 hover:text-blue-800 text-lg text-center block">Read More</a>
+                    </div>
+                    <div>
+
+                    </div>
+                 </div>
+                <!-- <a href="Baihaqi Hilmi Estanto.pdf" download="Baihaqi Hilmi Estanto.pdf" class="mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out"> -->
+                    <!-- Download My Resume -->
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-gray-800 text-yellow-100 py-5 mt-10">
+        <div class="container mx-auto px-4 text-center text-md">
+            <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function showProjectDescription(projectId) {
+            const description = document.getElementById(projectId + '-description');
+            if (description.classList.contains('hidden')) {
+                description.classList.remove('hidden');
+            } else {
+                description.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
